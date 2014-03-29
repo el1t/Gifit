@@ -35,7 +35,11 @@
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-			<intent-filter>
+        </activity>
+        <activity
+            android:name="com.el1t.photif.convert"
+            android:label="Convert" >
+            <intent-filter>
         		<action android:name="android.intent.action.SEND" />
         		<category android:name="android.intent.category.DEFAULT" />
         		<data android:mimeType="image/*" />

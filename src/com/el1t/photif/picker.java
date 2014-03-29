@@ -34,6 +34,7 @@ public class picker extends Activity {
 	    switch(requestCode) {
 	    case SELECT_PHOTO:
 	        if(resultCode == RESULT_OK){
+	        	System.out.println("Picker.java: Recieved");
 	    		Intent i = new Intent(picker.this, convert.class);
 	    		i.setType("image/*");
 	    		i.putExtra(Intent.EXTRA_ALLOW_MULTIPLE , true);

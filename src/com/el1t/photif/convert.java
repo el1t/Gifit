@@ -51,6 +51,8 @@ public class convert extends Activity {
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
+	    } else {
+	    	System.out.println("ERROR: Null received");
 	    }
 	}
 	

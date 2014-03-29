@@ -25,10 +25,7 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Intent i = new Intent(MainActivity.this, picker.class);
-				i.setType("image/*");
-				i.putExtra(Intent.EXTRA_ALLOW_MULTIPLE , true);
-				i.setAction(Intent.ACTION_SEND_MULTIPLE);
-				startActivity(Intent.createChooser(i, "Select Picture"));
+				startActivity(i);
 			}
 		});
     }
