@@ -23,7 +23,7 @@ public class picker extends Activity {
 		Intent photoPickerIntent = new Intent(Intent.ACTION_GET_CONTENT);
 		photoPickerIntent.setType("image/*");
 		photoPickerIntent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE , true);
-		startActivityForResult(Intent.createChooser(photoPickerIntent, "Select Picture"), SELECT_PHOTO);		
+		startActivityForResult(Intent.createChooser(photoPickerIntent, "Select Picture"), SELECT_PHOTO);	
 	}
 	
 	

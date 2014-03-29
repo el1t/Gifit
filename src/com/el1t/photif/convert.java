@@ -15,10 +15,12 @@ import android.net.Uri;
 import android.os.Bundle;
 
 public class convert extends Activity {
-	protected void OnCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
 		Intent intent = getIntent();
 	    String action = intent.getAction();
 	    String type = intent.getType();
+	    System.out.println("Convert started");
 		if (Intent.ACTION_SEND.equals(action) && type != null) {
 	        if (type.startsWith("image/")) {
 	            handleSendImage(intent); // Handle single image being sent
@@ -27,6 +29,8 @@ public class convert extends Activity {
 	        if (type.startsWith("image/")) {
 	            handleSendMultipleImages(intent); // Handle multiple images being sent
 	        }
+	    } else {
+	    	System.out.println("Other intent received: " + intent);
 	    }
 	}
 	protected void handleSendImage(Intent i) {
@@ -59,8 +63,10 @@ public class convert extends Activity {
 	protected void handleSendMultipleImages(Intent i) {
     	System.out.println(i.getData());
         ArrayList<Uri> parcelables = i.getParcelableArrayListExtra(Intent.EXTRA_STREAM);
-        if(parcelables == null)
+        if(parcelables == null) {
+     	    System.out.println("ERROR: Null received");
         	return;
+        }
         //InputStream imageStream;
         OutputStream os;
 		try {
