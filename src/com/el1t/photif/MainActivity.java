@@ -1,6 +1,7 @@
 package com.el1t.photif;
 
 import android.app.ActionBar;
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.support.v4.app.Fragment;
@@ -43,6 +44,9 @@ public class MainActivity extends FragmentActivity implements
 								getString(R.string.title_section1),
 								getString(R.string.title_section2),
 								getString(R.string.title_section3), }), this);
+		Intent myIntent = new Intent(getBaseContext(), picker.class);
+		//myIntent.putExtra("key", value); //Optional parameters
+		getBaseContext().startActivity(myIntent);
 	}
 
 	@Override

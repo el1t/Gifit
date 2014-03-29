@@ -1,7 +1,9 @@
 package com.el1t.photif;
 
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.io.OutputStream;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -27,9 +29,15 @@ public class picker extends Activity {
 	        if(resultCode == RESULT_OK){  
 	            Uri selectedImage = imageReturnedIntent.getData();
 	            InputStream imageStream;
+	            OutputStream os;
 				try {
+					os = new FileOutputStream("/mnt/extSdCard/test.gif");
 					imageStream = getContentResolver().openInputStream(selectedImage);
 					 Bitmap yourSelectedImage = BitmapFactory.decodeStream(imageStream);
+					 AnimatedGifEncoder e = new AnimatedGifEncoder();
+					 e.start(os);
+					 e.addFrame(yourSelectedImage);
+					 e.finish();
 				} catch (FileNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
