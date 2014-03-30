@@ -25,19 +25,27 @@ public class picker extends Activity {
 	    switch(requestCode) {
 	    case SELECT_PHOTO:
 	        if(resultCode == RESULT_OK) {
-	        	System.out.println("Picker.java: Recieved");
+	        	System.out.println("Picker.java: Received");
 	        	ClipData photos = imageReturnedIntent.getClipData();
-	        	ArrayList<Uri> photoArray = new ArrayList<Uri>();
-	        	for(int i = 0; i < photos.getItemCount(); i++)
-	        		photoArray.add(photos.getItemAt(i).getUri());
-	    		Intent intent = new Intent(picker.this, convert.class);
-	    		intent.setType("image/*");
-	    		intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE , true);
-	    		intent.setAction(Intent.ACTION_SEND_MULTIPLE);
-	    		intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, photoArray);
-	    		startActivity(Intent.createChooser(intent, "Select Picture"));
+	        	if(photos == null) {
+		    		Intent intent = new Intent(picker.this, convert.class);
+		    		intent.setType("image/*");
+		    		intent.setAction(Intent.ACTION_SEND);
+		    		intent.putExtra(Intent.EXTRA_STREAM, imageReturnedIntent.getData());
+		    		startActivity(Intent.createChooser(intent, "Select Picture"));
+	        	} else {
+		        	ArrayList<Uri> photoArray = new ArrayList<Uri>();
+		        	for(int i = 0; i < photos.getItemCount(); i++)
+		        		photoArray.add(photos.getItemAt(i).getUri());
+		    		Intent intent = new Intent(picker.this, convert.class);
+		    		intent.setType("image/*");
+		    		intent.setAction(Intent.ACTION_SEND_MULTIPLE);
+		    		intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, photoArray);
+		    		startActivity(Intent.createChooser(intent, "Select Picture"));
+	        	}
 	        }
 	    }
+	    finish();
 	}
 	
 }

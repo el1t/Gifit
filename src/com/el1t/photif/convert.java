@@ -33,6 +33,7 @@ public class convert extends Activity {
 	    	System.out.println("Other intent received: " + intent);
 	    }
 	}
+	
 	protected void handleSendImage(Intent i) {
 		Uri imageUri = (Uri) i.getParcelableExtra(Intent.EXTRA_STREAM);
 	    if (imageUri != null) {
@@ -56,16 +57,17 @@ public class convert extends Activity {
 				e1.printStackTrace();
 			}
 	    } else {
-	    	System.out.println("ERROR: Null received");
+	    	System.out.println("ERROR: Null received send");
 	    }
+	    finish();
 	}
 	
 	protected void handleSendMultipleImages(Intent i) {
     	System.out.println(i.getData());
         ArrayList<Uri> parcelables = i.getParcelableArrayListExtra(Intent.EXTRA_STREAM);
         if(parcelables == null) {
-     	    System.out.println("ERROR: Null received");
-        	return;
+     	    System.out.println("ERROR: Null received send_multiple");
+        	finish();
         }
         //InputStream imageStream;
         OutputStream os;
@@ -90,6 +92,7 @@ public class convert extends Activity {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+		finish();
 	}
 	private Bitmap decodeUri(Uri selectedImage) throws FileNotFoundException {
 
