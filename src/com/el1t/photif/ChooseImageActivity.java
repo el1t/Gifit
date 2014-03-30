@@ -73,7 +73,7 @@ public class ChooseImageActivity extends ActionBarActivity {
 	}
 	
 	private ChooseImageFragment getChooseImageFragment() {
-		return (ChooseImageFragment) getSupportFragmentManager().findFragmentById(R.id.choose_image_fragment);
+		return (ChooseImageFragment) getSupportFragmentManager().findFragmentById(R.id.share);
 	}
 	
 	public void copyLink(View view) {

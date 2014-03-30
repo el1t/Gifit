@@ -5,8 +5,14 @@ import android.content.Intent;
 import android.os.Bundle;
 
 public class gallery extends Activity {
-	public void onCreate(Bundle savedInstanceState) {
-		Intent LaunchIntent = getPackageManager().getLaunchIntentForPackage("com.package.de.wildcard.animatedgif.player");
-		startActivity(LaunchIntent);
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		Intent LaunchIntent = getPackageManager().getLaunchIntentForPackage("de.wildcard.animatedgif.player");
+		if(LaunchIntent != null)
+			startActivity(LaunchIntent);
+	}
+	protected void onRestart() {
+		super.onRestart();
+		finish();
 	}
 }

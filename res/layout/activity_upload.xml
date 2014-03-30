@@ -3,9 +3,9 @@
     android:layout_height="match_parent" >
 
     <fragment
-        android:id="@+id/choose_image_fragment"
+        android:id="@+id/share"
         android:tag="choose_image"
-        android:name="com.imgur.api3example.ChooseImageFragment"
+        android:name="com.el1t.photif.share"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
