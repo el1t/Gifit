@@ -28,11 +28,12 @@ public class MainActivity extends Activity {
         final ImageView logo1 = (ImageView) findViewById(R.id.logo1);
         
         Animation translate = new TranslateAnimation(0, 360,-5,-5);
-        translate.setDuration(1500);
+        translate.setDuration(1000);
         translate.setInterpolator(new AccelerateDecelerateInterpolator());
         translate.setFillEnabled(true);
         translate.setFillBefore(true);
         translate.setFillAfter(true);
+        translate.setStartOffset(500);
         logo1.startAnimation(translate);
         
 		photo.setOnClickListener(new OnClickListener() {
@@ -80,7 +81,7 @@ public class MainActivity extends Activity {
     	super.onRestart();
     	final ImageView logo1 = (ImageView) findViewById(R.id.logo1);
     	Animation translate = new TranslateAnimation(0, 360,-5,-5);
-        translate.setDuration(1500);
+        translate.setDuration(1000);
         translate.setInterpolator(new AccelerateDecelerateInterpolator());
         translate.setFillEnabled(true);
         translate.setFillBefore(true);

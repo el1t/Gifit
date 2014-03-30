@@ -13,6 +13,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 
 public class convert extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +42,7 @@ public class convert extends Activity {
             //InputStream imageStream;
             OutputStream os;
 			try {
-				os = new BufferedOutputStream( new FileOutputStream("/external_sd/Pictures/gifit/test.gif"));
+				os = new BufferedOutputStream( new FileOutputStream(Environment.getExternalStorageDirectory().getPath() + "/Pictures/gifit/test.gif"));
 				//imageStream = getContentResolver().openInputStream(selectedImage);
 				//Bitmap yourSelectedImage = BitmapFactory.decodeStream(imageStream);
 				AnimatedGifEncoder e = new AnimatedGifEncoder();
@@ -72,7 +73,7 @@ public class convert extends Activity {
         //InputStream imageStream;
         OutputStream os;
 		try {
-			os = new BufferedOutputStream( new FileOutputStream("/external_sd/Pictures/gifit/test.gif"));
+			os = new BufferedOutputStream( new FileOutputStream(Environment.getExternalStorageDirectory().getPath() + "/Pictures/gifit/test.gif"));
 			//imageStream = getContentResolver().openInputStream(selectedImage);
 			//Bitmap yourSelectedImage = BitmapFactory.decodeStream(imageStream);
 			AnimatedGifEncoder e = new AnimatedGifEncoder();
