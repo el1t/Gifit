@@ -29,10 +29,7 @@ public class share extends Activity {
 		System.out.println("Share.class started");
 		share.context = getApplicationContext();
 		//if(!ImgurAuthorization.getInstance().isLoggedIn())
-		if(!repeat) {
-			repeat = true;
-			startActivityForResult(new Intent(getApplicationContext(), LoginActivity.class), ID);
-		}
+		startActivityForResult(new Intent(getApplicationContext(), LoginActivity.class), ID);
 	}
 	
     public static Context getAppContext() {
@@ -63,6 +60,8 @@ public class share extends Activity {
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
+			if(!repeat) {
+				repeat = true;
 			if (mImgurUploadTask != null) {
 				boolean cancelled = mImgurUploadTask.cancel(false);
 				if (!cancelled)
@@ -70,6 +69,7 @@ public class share extends Activity {
 			}
 			mImgurUploadTask = this;
 			mImgurUrl = null;
+			}
 		}
 		
 		@Override

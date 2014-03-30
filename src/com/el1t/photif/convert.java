@@ -51,6 +51,7 @@ public class convert extends Activity {
 				AnimatedGifEncoder e = new AnimatedGifEncoder();
 				System.out.println("does this work");
 				e.start(os);
+				e.setRepeat(0);
 				e.setDelay(i.getIntExtra("delay", 1000));
 				e.addFrame(decodeUri(imageUri));
 				e.finish();
@@ -83,6 +84,7 @@ public class convert extends Activity {
 			AnimatedGifEncoder e = new AnimatedGifEncoder();
 			System.out.println("does this work");
 			e.start(os);
+			e.setRepeat(0);
 			int temp = i.getIntExtra("delay", 1000);
 			e.setDelay(temp);
 			System.out.println(temp);

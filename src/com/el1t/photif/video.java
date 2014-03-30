@@ -41,8 +41,6 @@ public class video extends Activity {
 	        System.out.println(videoUri);
 	        System.out.println(videoUri.getPath());
 	        System.out.println("Video uri created");
-//	        File videoFile = new File(videoUri.getPath());
-//	        System.out.println("Path created");
 	        MediaMetadataRetriever mmRetriever = new MediaMetadataRetriever();
 	        System.out.println("please");
 	        mmRetriever.setDataSource(getBaseContext(), videoUri);
@@ -67,7 +65,7 @@ public class video extends Activity {
 //				temp.close();
 //				finish();
 				for(long i = 1; i < mp.getDuration()*1000; i+=333000) {
-					Bitmap bitmap = mmRetriever.getFrameAtTime(i);
+					Bitmap bitmap = mmRetriever.getFrameAtTime(i, MediaMetadataRetriever.OPTION_CLOSEST);
 					temp = new BufferedOutputStream( new FileOutputStream(Environment.getExternalStorageDirectory().getPath() + "/Pictures/gifit/temp" + i + ".png"));
 					bitmap.compress(Bitmap.CompressFormat.PNG, 100, temp);
 					System.out.println("Index " + i);

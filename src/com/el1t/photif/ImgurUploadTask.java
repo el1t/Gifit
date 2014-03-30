@@ -88,8 +88,7 @@ public abstract class ImgurUploadTask extends AsyncTask<Void, Void, String> {
 		return null;
 	}
 
-	private static int copy(InputStream input, OutputStream output)
-			throws IOException {
+	private static int copy(InputStream input, OutputStream output) throws IOException {
 		byte[] buffer = new byte[8192];
 		int count = 0;
 		int n = 0;

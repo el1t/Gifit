@@ -61,8 +61,6 @@ public class LoginActivity extends Activity {
                 runOnUiThread(new Runnable() {
                     @Override public void run() {
                         Toast.makeText(LoginActivity.this, R.string.logged_in, Toast.LENGTH_SHORT).show();
-                        root.removeAllViews();
-                        mWebView.destroy();
                         fin();
                     }
                 });
