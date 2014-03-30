@@ -64,6 +64,16 @@ public class MainActivity extends Activity {
 				startActivity(i);
 			}
 		});
+		
+		video.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				logo1.setAnimation(null);
+				Intent i = new Intent(MainActivity.this, video.class);
+				startActivity(i);
+			}
+		});
     }
 
     protected void onRestart() {

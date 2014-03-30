@@ -41,7 +41,7 @@ public class convert extends Activity {
             //InputStream imageStream;
             OutputStream os;
 			try {
-				os = new BufferedOutputStream( new FileOutputStream("/external_sd/test.gif"));
+				os = new BufferedOutputStream( new FileOutputStream("/external_sd/Pictures/gifit/test.gif"));
 				//imageStream = getContentResolver().openInputStream(selectedImage);
 				//Bitmap yourSelectedImage = BitmapFactory.decodeStream(imageStream);
 				AnimatedGifEncoder e = new AnimatedGifEncoder();
@@ -72,7 +72,7 @@ public class convert extends Activity {
         //InputStream imageStream;
         OutputStream os;
 		try {
-			os = new BufferedOutputStream( new FileOutputStream("/external_sd/test.gif"));
+			os = new BufferedOutputStream( new FileOutputStream("/external_sd/Pictures/gifit/test.gif"));
 			//imageStream = getContentResolver().openInputStream(selectedImage);
 			//Bitmap yourSelectedImage = BitmapFactory.decodeStream(imageStream);
 			AnimatedGifEncoder e = new AnimatedGifEncoder();
