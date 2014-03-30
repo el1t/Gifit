@@ -1,11 +1,11 @@
-package com.imgur.api3example;
+package com.el1t.photif;
 
 import android.app.Activity;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.imgur.api3example.login.ImgurAuthorization;
+import com.el1t.photif.login.ImgurAuthorization;
 
 import org.json.JSONObject;
 

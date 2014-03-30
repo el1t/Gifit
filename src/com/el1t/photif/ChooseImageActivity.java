@@ -1,4 +1,4 @@
-package com.imgur.api3example;
+package com.el1t.photif;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -9,9 +9,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.imgur.api3example.login.ImgurAuthorization;
-import com.imgur.api3example.login.LoginActivity;
-import com.imgur.api3example.login.RefreshAccessTokenTask;
+import com.el1t.photif.login.ImgurAuthorization;
+import com.el1t.photif.login.LoginActivity;
+import com.el1t.photif.login.RefreshAccessTokenTask;
 
 public class ChooseImageActivity extends ActionBarActivity {
 	

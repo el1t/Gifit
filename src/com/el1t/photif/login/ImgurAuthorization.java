@@ -1,12 +1,12 @@
-package com.imgur.api3example.login;
+package com.el1t.photif.login;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.imgur.api3example.ImgurSampleApplication;
-import com.imgur.api3example.MyAppConstants;
+import com.el1t.photif.ImgurSampleApplication;
+import com.el1t.photif.MyAppConstants;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;

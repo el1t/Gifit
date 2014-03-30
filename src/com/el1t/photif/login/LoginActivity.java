@@ -1,4 +1,4 @@
-package com.imgur.api3example.login;
+package com.el1t.photif.login;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -7,8 +7,8 @@ import android.webkit.WebViewClient;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
-import com.imgur.api3example.MyAppConstants;
-import com.imgur.api3example.R;
+import com.el1t.photif.MyAppConstants;
+import com.el1t.photif.R;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

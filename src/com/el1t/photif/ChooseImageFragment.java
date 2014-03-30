@@ -1,4 +1,4 @@
-package com.imgur.api3example;
+package com.el1t.photif;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -13,7 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.imgur.api3example.util.BitmapUtils;
+import com.el1t.photif.util.BitmapUtils;
 
 @SuppressWarnings("deprecation")
 public class ChooseImageFragment extends Fragment {

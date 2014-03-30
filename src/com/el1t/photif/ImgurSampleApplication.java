@@ -1,4 +1,4 @@
-package com.imgur.api3example;
+package com.el1t.photif;
 
 import android.app.Application;
 import android.content.Context;

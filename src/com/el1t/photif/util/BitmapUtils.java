@@ -1,4 +1,4 @@
-package com.imgur.api3example.util;
+package com.el1t.photif.util;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -10,7 +10,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.util.Log;
 
-import com.imgur.api3example.ImgurSampleApplication;
+import com.el1t.photif.ImgurSampleApplication;
 
 /**
  * http://developer.android.com/training/displaying-bitmaps/load-bitmap.html

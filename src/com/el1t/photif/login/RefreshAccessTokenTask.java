@@ -1,4 +1,4 @@
-package com.imgur.api3example.login;
+package com.el1t.photif.login;
 
 import android.os.AsyncTask;
 import android.text.TextUtils;
