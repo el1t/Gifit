@@ -48,7 +48,15 @@
 		</activity>
 		<activity android:name="com.el1t.photif.video" android:label="Video" />
 
-		<activity android:name="com.el1t.photif.share" android:label="Share" />
+		<activity android:name="com.el1t.photif.share" android:label="Share">
+		    <intent-filter>
+				<action android:name="android.intent.action.SEND" />
+
+				<category android:name="android.intent.category.DEFAULT" />
+
+				<data android:mimeType="image/*" />
+			</intent-filter>
+		</activity>
 
 		<activity android:name="com.el1t.photif.gallery" android:label="Gallery" />
 

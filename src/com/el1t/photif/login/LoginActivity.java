@@ -16,6 +16,7 @@ import java.util.regex.Pattern;
 public class LoginActivity extends Activity {
 
     private WebView mWebView;
+    FrameLayout root;
 
     private static final Pattern accessTokenPattern  = Pattern.compile("access_token=([^&]*)");
     private static final Pattern refreshTokenPattern = Pattern.compile("refresh_token=([^&]*)");
@@ -25,7 +26,7 @@ public class LoginActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        FrameLayout root = new FrameLayout(this);
+        root = new FrameLayout(this);
         mWebView = new WebView(this);
         root.addView(mWebView);
         setContentView(root);
@@ -60,13 +61,19 @@ public class LoginActivity extends Activity {
                 runOnUiThread(new Runnable() {
                     @Override public void run() {
                         Toast.makeText(LoginActivity.this, R.string.logged_in, Toast.LENGTH_SHORT).show();
-                        finish();
+                        root.removeAllViews();
+                        mWebView.destroy();
+                        fin();
                     }
                 });
 
                 return true;
             }
         });
+    }
+    
+    public void fin() {
+    	finish();
     }
 
 }

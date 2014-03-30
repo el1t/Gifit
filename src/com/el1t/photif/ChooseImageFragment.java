@@ -22,7 +22,7 @@ public class ChooseImageFragment extends Fragment {
 	private Uri mImageUri;
 	private String mImgurUrl;
 
-	private MyImgurUploadTask mImgurUploadTask;
+	//private MyImgurUploadTask mImgurUploadTask;
 	private int mImgurUploadStatus;
 
 	@Override
@@ -35,8 +35,8 @@ public class ChooseImageFragment extends Fragment {
 		super.onViewCreated(view, savedInstanceState);
         if (mImagePreviewBitmap != null) {
         	((ImageView) getView().findViewById(R.id.choose_image_preview)).setImageBitmap(mImagePreviewBitmap);
-        	if (mImageUri != null && mImgurUrl == null)
-        		new MyImgurUploadTask(mImageUri).execute();
+        	//if (mImageUri != null && mImgurUrl == null)
+        		//new MyImgurUploadTask(mImageUri).execute();
         }
 	}
 
@@ -64,49 +64,49 @@ public class ChooseImageFragment extends Fragment {
 		outState.putParcelable("imageUri", mImageUri);
 	}
 
-	private class MyImgurUploadTask extends ImgurUploadTask {
-		public MyImgurUploadTask(Uri imageUri) {
-			super(imageUri, getActivity());
-		}
-		@Override
-		protected void onPreExecute() {
-			super.onPreExecute();
-			if (mImgurUploadTask != null) {
-				boolean cancelled = mImgurUploadTask.cancel(false);
-				if (!cancelled)
-					this.cancel(true);
-			}
-			mImgurUploadTask = this;
-			mImgurUrl = null;
-			getView().findViewById(R.id.choose_image_button).setEnabled(false);
-			setImgurUploadStatus(R.string.choose_image_upload_status_uploading);
-		}
-		@Override
-		protected void onPostExecute(String imageId) {
-			super.onPostExecute(imageId);
-			mImgurUploadTask = null;
-			if (imageId != null) {
-				mImgurUrl = "http://imgur.com/" + imageId;
-				setImgurUploadStatus(R.string.choose_image_upload_status_success);
-				if (isResumed()) {
-					getView().findViewById(R.id.imgur_link_layout).setVisibility(View.VISIBLE);
-					((TextView) getView().findViewById(R.id.link_url)).setText(mImgurUrl);
-				}
-			} else {
-				mImgurUrl = null;
-				setImgurUploadStatus(R.string.choose_image_upload_status_failure);
-				if (isResumed()) {
-					getView().findViewById(R.id.imgur_link_layout).setVisibility(View.GONE);
-					if (isVisible()) {
-						((ImageView) getView().findViewById(R.id.choose_image_preview)).setImageBitmap(null);
-						Toast.makeText(getActivity(), R.string.imgur_upload_error, Toast.LENGTH_LONG).show();
-					}
-				}
-			}
-			if (isVisible())
-				getView().findViewById(R.id.choose_image_button).setEnabled(true);
-		}
-	}
+//	private class MyImgurUploadTask extends ImgurUploadTask {
+//		public MyImgurUploadTask(Uri imageUri) {
+//			super(imageUri, getActivity());
+//		}
+//		@Override
+//		protected void onPreExecute() {
+//			super.onPreExecute();
+//			if (mImgurUploadTask != null) {
+//				boolean cancelled = mImgurUploadTask.cancel(false);
+//				if (!cancelled)
+//					this.cancel(true);
+//			}
+//			mImgurUploadTask = this;
+//			mImgurUrl = null;
+//			getView().findViewById(R.id.choose_image_button).setEnabled(false);
+//			setImgurUploadStatus(R.string.choose_image_upload_status_uploading);
+//		}
+//		@Override
+//		protected void onPostExecute(String imageId) {
+//			super.onPostExecute(imageId);
+//			mImgurUploadTask = null;
+//			if (imageId != null) {
+//				mImgurUrl = "http://imgur.com/" + imageId;
+//				setImgurUploadStatus(R.string.choose_image_upload_status_success);
+//				if (isResumed()) {
+//					getView().findViewById(R.id.imgur_link_layout).setVisibility(View.VISIBLE);
+//					((TextView) getView().findViewById(R.id.link_url)).setText(mImgurUrl);
+//				}
+//			} else {
+//				mImgurUrl = null;
+//				setImgurUploadStatus(R.string.choose_image_upload_status_failure);
+//				if (isResumed()) {
+//					getView().findViewById(R.id.imgur_link_layout).setVisibility(View.GONE);
+//					if (isVisible()) {
+//						((ImageView) getView().findViewById(R.id.choose_image_preview)).setImageBitmap(null);
+//						Toast.makeText(getActivity(), R.string.imgur_upload_error, Toast.LENGTH_LONG).show();
+//					}
+//				}
+//			}
+//			if (isVisible())
+//				getView().findViewById(R.id.choose_image_button).setEnabled(true);
+//		}
+//	}
 	
 	private void setImgurUploadStatus(int stringResId) {
 		mImgurUploadStatus = stringResId;
@@ -130,7 +130,7 @@ public class ChooseImageFragment extends Fragment {
 		mImagePreviewBitmap = BitmapUtils.decodeSampledBitmapFromUri(imageUri, 400, 400);
 		if (getView() != null) {
 			((ImageView) getView().findViewById(R.id.choose_image_preview)).setImageBitmap(mImagePreviewBitmap);
-			new MyImgurUploadTask(imageUri).execute();
+			//new MyImgurUploadTask(imageUri).execute();
 		}
 	}
 	

@@ -3,6 +3,7 @@ package com.el1t.photif;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.AccelerateDecelerateInterpolator;
@@ -52,6 +53,9 @@ public class MainActivity extends Activity {
 				// TODO Auto-generated method stub
 				logo1.setAnimation(null);
 				Intent i = new Intent(MainActivity.this, share.class);
+	    		i.setType("image/*");
+	    		i.setAction(Intent.ACTION_SEND);
+	    		i.putExtra("Uri", Environment.getExternalStorageDirectory().getPath() + "/Pictures/gifit/test.gif");
 				startActivity(i);
 			}
 		});

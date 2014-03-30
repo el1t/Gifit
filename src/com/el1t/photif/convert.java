@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
 
+import com.el1t.photif.login.LoginActivity;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -14,6 +16,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.widget.Toast;
 
 public class convert extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +64,7 @@ public class convert extends Activity {
 	    } else {
 	    	System.out.println("ERROR: Null received send");
 	    }
+	    Toast.makeText(convert.this, "Finished!", Toast.LENGTH_SHORT).show();
 	    finish();
 	}
 	
@@ -96,6 +100,7 @@ public class convert extends Activity {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+		Toast.makeText(convert.this, "Finished!", Toast.LENGTH_SHORT).show();
 		finish();
 	}
 	

@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.el1t.photif.ImgurSampleApplication;
+import com.el1t.photif.share;
 import com.el1t.photif.MyAppConstants;
 
 import org.apache.http.NameValuePair;
@@ -38,13 +38,13 @@ public class ImgurAuthorization {
     }
 
     public boolean isLoggedIn() {
-        Context context = ImgurSampleApplication.getAppContext();
+        Context context = share.getAppContext();
         SharedPreferences prefs = context.getSharedPreferences(SHARED_PREFERENCES_NAME, 0);
         return !TextUtils.isEmpty(prefs.getString("access_token", null));
     }
 
     public void addToHttpURLConnection(HttpURLConnection conn) {
-        Context context = ImgurSampleApplication.getAppContext();
+        Context context = share.getAppContext();
         SharedPreferences prefs = context.getSharedPreferences(SHARED_PREFERENCES_NAME, 0);
         String accessToken = prefs.getString("access_token", null);
 
@@ -57,7 +57,7 @@ public class ImgurAuthorization {
     }
 
     public void saveRefreshToken(String refreshToken, String accessToken, long expiresIn) {
-        Context context = ImgurSampleApplication.getAppContext();
+        Context context = share.getAppContext();
         context.getSharedPreferences(SHARED_PREFERENCES_NAME, 0)
                 .edit()
                 .putString("access_token", accessToken)
@@ -67,7 +67,7 @@ public class ImgurAuthorization {
     }
 
     public String requestNewAccessToken() {
-        Context context = ImgurSampleApplication.getAppContext();
+        Context context = share.getAppContext();
         SharedPreferences prefs = context.getSharedPreferences(SHARED_PREFERENCES_NAME, 0);
         String refreshToken = prefs.getString("refresh_token", null);
 
@@ -141,7 +141,7 @@ public class ImgurAuthorization {
         String tokenType        = root.getString("token_type");
         String accountUsername  = root.getString("account_username");
 
-        Context context = ImgurSampleApplication.getAppContext();
+        Context context = share.getAppContext();
         context.getSharedPreferences(SHARED_PREFERENCES_NAME, 0)
                 .edit()
                 .putString("access_token", accessToken)
@@ -153,7 +153,7 @@ public class ImgurAuthorization {
     }
 
     public void logout() {
-        Context context = ImgurSampleApplication.getAppContext();
+        Context context = share.getAppContext();
         context.getSharedPreferences(SHARED_PREFERENCES_NAME, 0)
                 .edit()
                 .clear()

@@ -18,6 +18,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.widget.Toast;
 
 public class video extends Activity {
 	static final int REQUEST_VIDEO_CAPTURE = 1;
@@ -85,6 +86,7 @@ public class video extends Activity {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
+			Toast.makeText(video.this, "Finished!", Toast.LENGTH_SHORT).show();
 			finish();
 	    }
 	}
