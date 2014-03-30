@@ -25,7 +25,7 @@ public class MainActivity extends Activity {
         ImageView photo = (ImageView) findViewById(R.id.photo);
         ImageView gallery = (ImageView) findViewById(R.id.gallery);
         ImageView share = (ImageView) findViewById(R.id.share);
-        ImageView logo1 = (ImageView) findViewById(R.id.logo1);
+        final ImageView logo1 = (ImageView) findViewById(R.id.logo1);
         
         Animation translate = new TranslateAnimation(0, 360,-5,-5);
         translate.setDuration(1500);
@@ -39,6 +39,7 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				logo1.setAnimation(null);
 				Intent i = new Intent(MainActivity.this, picker.class);
 				startActivity(i);
 			}
@@ -48,9 +49,32 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				logo1.setAnimation(null);
 				Intent i = new Intent(MainActivity.this, share.class);
 				startActivity(i);
 			}
 		});
+		
+		gallery.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				logo1.setAnimation(null);
+				Intent i = new Intent(MainActivity.this, gallery.class);
+				startActivity(i);
+			}
+		});
+    }
+
+    protected void onRestart() {
+    	super.onRestart();
+    	final ImageView logo1 = (ImageView) findViewById(R.id.logo1);
+    	Animation translate = new TranslateAnimation(0, 360,-5,-5);
+        translate.setDuration(1500);
+        translate.setInterpolator(new AccelerateDecelerateInterpolator());
+        translate.setFillEnabled(true);
+        translate.setFillBefore(true);
+        translate.setFillAfter(true);
+        logo1.startAnimation(translate);
     }
 }

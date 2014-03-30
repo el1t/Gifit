@@ -2,10 +2,13 @@ package com.el1t.photif;
 
 import java.util.ArrayList;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.ClipData;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.widget.EditText;
 
 public class picker extends Activity {
 	private static final int SELECT_PHOTO = 100;
@@ -32,7 +35,7 @@ public class picker extends Activity {
 		    		intent.setType("image/*");
 		    		intent.setAction(Intent.ACTION_SEND);
 		    		intent.putExtra(Intent.EXTRA_STREAM, imageReturnedIntent.getData());
-		    		startActivity(Intent.createChooser(intent, "Select Picture"));
+		    		promptDelay(intent);
 	        	} else {
 		        	ArrayList<Uri> photoArray = new ArrayList<Uri>();
 		        	for(int i = 0; i < photos.getItemCount(); i++)
@@ -41,11 +44,33 @@ public class picker extends Activity {
 		    		intent.setType("image/*");
 		    		intent.setAction(Intent.ACTION_SEND_MULTIPLE);
 		    		intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, photoArray);
-		    		startActivity(Intent.createChooser(intent, "Select Picture"));
+		    		promptDelay(intent);
 	        	}
 	        }
 	    }
-	    finish();
+	    //finish();
 	}
-	
+	AlertDialog a;
+	public void promptDelay(final Intent intent) {
+		final EditText input = new EditText(this);
+		AlertDialog.Builder ab = new AlertDialog.Builder(this, android.R.style.Theme_Holo_Dialog)
+	    .setTitle("Set Delay Between Images")
+	    .setView(input)
+	    .setPositiveButton("Done", new DialogInterface.OnClickListener() {
+	        public void onClick(DialogInterface dialog, int whichButton) {
+	           String value = input.getText().toString();
+	           if(!value.equals(""))
+	        	   intent.putExtra("delay", (int) (Float.parseFloat(value) * 1000));
+	           startActivity(Intent.createChooser(intent, "Select Picture"));
+	           finish();
+	        }
+	    });
+		a = ab.create();
+		a.show();
+//		while(a.isShowing()) {
+//			System.
+//		}
+		//a.dismiss();
+		return;
+	}
 }

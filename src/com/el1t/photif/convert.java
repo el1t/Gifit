@@ -8,15 +8,11 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.text.Editable;
-import android.widget.EditText;
 
 public class convert extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +47,9 @@ public class convert extends Activity {
 				AnimatedGifEncoder e = new AnimatedGifEncoder();
 				System.out.println("does this work");
 				e.start(os);
+				e.setDelay(i.getIntExtra("delay", 100));
+				System.out.println(i.getIntExtra("delay", 100));
 				e.addFrame(decodeUri(imageUri));
-				promptDelay(e);
 				e.finish();
 				os.close();
 				System.out.println("haias");
@@ -68,7 +65,6 @@ public class convert extends Activity {
 	}
 	
 	protected void handleSendMultipleImages(Intent i) {
-    	System.out.println(i.getData());
         ArrayList<Uri> parcelables = i.getParcelableArrayListExtra(Intent.EXTRA_STREAM);
         if(parcelables == null) {
      	    System.out.println("ERROR: Null received send_multiple");
@@ -83,11 +79,11 @@ public class convert extends Activity {
 			AnimatedGifEncoder e = new AnimatedGifEncoder();
 			System.out.println("does this work");
 			e.start(os);
+			e.setDelay(i.getIntExtra("delay", 100));
 			for(Uri parcel : parcelables) {
 				Bitmap imageFinal = decodeUri(parcel);
 				e.addFrame(imageFinal);
 			}
-			promptDelay(e);
 			e.finish();
 			os.close();
 			System.out.println("haias");
@@ -99,29 +95,6 @@ public class convert extends Activity {
 			e1.printStackTrace();
 		}
 		finish();
-	}
-	
-	public void promptDelay(final AnimatedGifEncoder e) {
-		final EditText input = new EditText(this);
-		AlertDialog.Builder ab = new AlertDialog.Builder(this)
-	    .setTitle("Delay")
-	    .setMessage("Set Delay")
-	    .setView(input)
-	    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-	        public void onClick(DialogInterface dialog, int whichButton) {
-	           String value = input.getText().toString();
-	           e.setDelay((int) (Float.parseFloat(value) * 1000));
-	           return;
-	        }
-	    });
-		AlertDialog a = ab.create();
-		a.show();
-		a.dismiss();
-//		while(a.isShowing()) {
-//			System.
-//		}
-		//a.dismiss();
-		return;
 	}
 	
 	private Bitmap decodeUri(Uri selectedImage) throws FileNotFoundException {
