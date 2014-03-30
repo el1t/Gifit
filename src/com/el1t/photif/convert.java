@@ -47,8 +47,7 @@ public class convert extends Activity {
 				AnimatedGifEncoder e = new AnimatedGifEncoder();
 				System.out.println("does this work");
 				e.start(os);
-				e.setDelay(i.getIntExtra("delay", 100));
-				System.out.println(i.getIntExtra("delay", 100));
+				e.setDelay(i.getIntExtra("delay", 1000));
 				e.addFrame(decodeUri(imageUri));
 				e.finish();
 				os.close();
@@ -79,7 +78,9 @@ public class convert extends Activity {
 			AnimatedGifEncoder e = new AnimatedGifEncoder();
 			System.out.println("does this work");
 			e.start(os);
-			e.setDelay(i.getIntExtra("delay", 100));
+			int temp = i.getIntExtra("delay", 1000);
+			e.setDelay(temp);
+			System.out.println(temp);
 			for(Uri parcel : parcelables) {
 				Bitmap imageFinal = decodeUri(parcel);
 				e.addFrame(imageFinal);

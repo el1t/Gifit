@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.WindowManager;
 import android.widget.EditText;
 
 public class picker extends Activity {
@@ -54,13 +55,15 @@ public class picker extends Activity {
 	public void promptDelay(final Intent intent) {
 		final EditText input = new EditText(this);
 		AlertDialog.Builder ab = new AlertDialog.Builder(this, android.R.style.Theme_Holo_Dialog)
-	    .setTitle("Set Delay Between Images")
+	    .setTitle("Set Delay Between Images (Seconds)")
 	    .setView(input)
 	    .setPositiveButton("Done", new DialogInterface.OnClickListener() {
 	        public void onClick(DialogInterface dialog, int whichButton) {
 	           String value = input.getText().toString();
 	           if(!value.equals(""))
 	        	   intent.putExtra("delay", (int) (Float.parseFloat(value) * 1000));
+	           getWindow().setSoftInputMode(
+	        		      WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 	           startActivity(Intent.createChooser(intent, "Select Picture"));
 	           finish();
 	        }
